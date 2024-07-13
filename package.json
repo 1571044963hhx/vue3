@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "echarts": "^5.5.0",
+    "echarts-gl": "^2.0.9",
+    "echarts-liquidfill": "^3.1.0",
+    "lodash": "^4.17.21",
+    "moment": "^2.30.1"
+  }
+}
