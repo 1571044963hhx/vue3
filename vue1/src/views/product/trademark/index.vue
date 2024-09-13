@@ -163,6 +163,7 @@ const confirm = async () => {
     //调用这个方法进行全部表单相校验,如果校验全部通过，在执行后面的语法
     await formRef.value.validate();
     let result: any = await reqAddOrUpdateTrademark(trademarkParams);
+    console.log(trademarkParams)
     //添加|修改已有品牌
     if (result.code == 200) {
         //关闭对话框

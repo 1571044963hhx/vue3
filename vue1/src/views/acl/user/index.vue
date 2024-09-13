@@ -12,7 +12,7 @@
     </el-card>
     <el-card style="margin: 10px 10px">
         <el-button type="primary" @click="addUser" v-has="`btn.User.add`">添加</el-button>
-        <el-button type="danger" @click="batchRemove" :disabled="keyword?false:true">批量删除</el-button>
+        <el-button type="danger" @click="batchRemove" :disabled="idList.length >= 1 ? false : true">批量删除</el-button>
         <el-table @selection-change="selectChange" :data="userInfo" border>
             <el-table-column type="selection"></el-table-column>
             <el-table-column label="#" type="index"></el-table-column>
@@ -24,7 +24,8 @@
             <el-table-column label="更新时间" prop="updateTime"></el-table-column>
             <el-table-column label="操作">
                 <template #="{ row, $index }">
-                    <el-button type="primary" icon="View" @click="setRole(row)" v-has="`btn.User.assgin`">分配角色</el-button>
+                    <el-button type="primary" icon="View" @click="setRole(row)"
+                        v-has="`btn.User.assgin`">分配角色</el-button>
                     <el-button type="primary" icon="Edit" @click="updateUser(row)"></el-button>
                     <el-button type="primary" icon="Delete" @click="deleteUser(row.id)"></el-button>
                 </template>
@@ -74,7 +75,8 @@
                         <el-checkbox v-model="checkAll" :indeterminate="isIndeterminate"
                             @change="handleCheckAllChange">全选</el-checkbox>
                         <el-checkbox-group v-model="assignRoles" @change="handleCheckedCitiesChange">
-                            <el-checkbox v-for="(role, index) in allRolesList" :key="index" :label="role" :value="role">{{
+                            <el-checkbox v-for="(role, index) in allRolesList" :key="index" :label="role"
+                                :value="role">{{
             role.roleName }}</el-checkbox>
                         </el-checkbox-group>
                     </el-form-item>
@@ -96,7 +98,7 @@ import { ref, reactive, nextTick } from 'vue'
 import { onMounted } from 'vue';
 import { reqUserInfo, reqAddOrUpdateUser, reqSetRole, reqSetRoles, reqDeleteUser, reqBatchRemove } from '../../../api/acl/user/index';
 import { ElMessage } from 'element-plus';
-import  useLayOutSettingStore  from '../../../store/modules/setting'
+import useLayOutSettingStore from '../../../store/modules/setting'
 
 let pageNo = ref(1)
 let pageSize = ref(5)
@@ -120,17 +122,16 @@ let reqSetRolesId = {
     roleIdList: [],
     userId: ''
 }
-let idList =ref([]);
+let idList = ref([]);
 let keyword = ref('');
-let settingStore = useLayOutSettingStore();
-
+let settingStore = useLayOutSettingStore()
 
 onMounted(() => {
     getHasUser()
 })
 const getHasUser = async (pager = 1) => {
     pageNo.value = pager
-    let result: any = await reqUserInfo(pageNo.value, pageSize.value,keyword.value);
+    let result: any = await reqUserInfo(pageNo.value, pageSize.value, keyword.value);
     if (result.code == 200) {
         userInfo.value = result.data.records;
         total.value = result.data.total
@@ -213,9 +214,11 @@ const cancel = () => {
 const setRole = async (row: any) => {
     drawer1.value = true
     Object.assign(userParams, row)
+    console.log(userParams.id)
     let result: any = await reqSetRole(userParams.id)
     allRolesList.value = result.data.allRolesList
     assignRoles.value = result.data.assignRoles
+    console.log(assignRoles.value)
 }
 
 const handleCheckAllChange = (val: any) => {
@@ -264,7 +267,8 @@ const deleteUser = async (userId: any) => {
     }
 }
 const batchRemove = async () => {
-    let result:any = await reqBatchRemove(idList.value)
+
+    let result: any = await reqBatchRemove(idList.value)
     if (result.code == 200) {
         ElMessage({
             type: 'success',
@@ -278,12 +282,13 @@ const batchRemove = async () => {
         })
     }
 }
-const selectChange = (value:any)=>{
-    idList.value = value.map((item:any)=>{
+const selectChange = (value: any) => {
+    console.log(value)
+    idList.value = value.map((item: any) => {
         return item.id
     })
 }
-const serach = ()=>{
+const serach = () => {
     getHasUser()
 }
 const reset = () => {

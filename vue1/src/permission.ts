@@ -7,6 +7,8 @@ import nprogress from 'nprogress'
 //引入进度条样式
 import 'nprogress/nprogress.css'
 nprogress.configure({ showSpinner: false })
+
+//需要显式传递 pinia 实例，以便在这些文件中访问 store，因为它们没有自动注入的 Vue 实例。因为你不在app里面
 import pinia from './store/index'
 import useUserStore from './store/modules/user'
 const usestore = useUserStore(pinia);

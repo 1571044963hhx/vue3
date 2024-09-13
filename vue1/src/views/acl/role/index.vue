@@ -67,7 +67,7 @@
         <template #default>
             <div>
                 <el-tree style="max-width: 400px" :data="menuArr" show-checkbox node-key="id" default-expand-all
-                    :props="defaultProps" :default-checked-keys="checkedArr" ref="tree"/>
+                    :props="defaultProps" :default-checked-keys="checkedArr" ref="tree" />
             </div>
         </template>
         <template #footer>
@@ -82,7 +82,7 @@
 
 <script lang="ts" setup>
 import { ref, onMounted, reactive } from 'vue';
-import { reqGetRole, reqAddRole, reqUpdataRole, reqSetPermission,reqSetPermisstion,reqRemoveRole } from '../../../api/acl/role/index'
+import { reqGetRole, reqAddRole, reqUpdataRole, reqSetPermission, reqSetPermisstion, reqRemoveRole } from '../../../api/acl/role/index'
 import useLayOutSettingStore from '../../../store/modules/setting'
 import { ElMessage } from 'element-plus';
 
@@ -171,9 +171,9 @@ const save1 = async () => {
 }
 
 //分配权限
-const confirmClick = async() => {
+const confirmClick = async () => {
     //职位的ID
-    const roleId = (addrole.id as number) ;
+    const roleId = (addrole.id as number);
     //选中节点的ID
     let arr = tree.value.getCheckedKeys();
     //半选的ID
@@ -199,16 +199,6 @@ const setPermission = async (row: any) => {
     checkedArr.value = filterSelectArr(menuArr.value, [])
 }
 
-// const filterSelectArr = (allData: any, initArr: any) => {
-//     allData.map((item: any) => {
-//         if (item.select == true && item.type == 4) {
-//             return initArr.push(item.id)
-//         }
-//         if (item.children && item.children.length > 0) {
-//             filterSelectArr(item.children, initArr);
-//         }
-//     })
-// }
 const filterSelectArr = (allData: any, initArr: any) => {
     allData.map((item: any) => {
         if (item.select && item.level == 4) {
@@ -216,9 +206,9 @@ const filterSelectArr = (allData: any, initArr: any) => {
         }
         if (item.children && item.children.length > 0) {
             filterSelectArr(item.children, initArr);
-        }     
+        }
     })
-    return initArr;  
+    return initArr;
 }
 
 const defaultProps = {

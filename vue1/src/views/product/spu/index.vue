@@ -42,7 +42,6 @@
                 </el-table-column>
                 <el-table-column label="价格" prop="price"></el-table-column>
                 <el-table-column label="重量" prop="weight"></el-table-column>
-
             </el-table>
         </el-dialog>
     </div>
@@ -57,8 +56,6 @@ import { ElMessage } from 'element-plus';
 
 import Skuform from './Skuform.vue';
 import Spuform from './Spuform.vue';
-
-
 
 let pageNO = ref(1);
 let pageSize = ref(3);
@@ -94,7 +91,6 @@ const updateScene = (row: any) => {
     spu.value.initHasSpuData(row);
 }
 const addSku = (spu: any) => {
-    console.log(spu)
     sku.value.initSkuData(categoryStore.c1Id, categoryStore.c2Id, spu);
     scene.value = 2
 }

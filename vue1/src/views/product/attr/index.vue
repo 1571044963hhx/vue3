@@ -78,7 +78,7 @@ import { reqAddOrUpdateAttr, reqAttr, reqRemoveAttr } from '../../../api/product
 import { watch, nextTick } from 'vue';
 import { ref, reactive,onBeforeUnmount } from 'vue';
 import useCategoryStore from '../../../store/category';
-import type { AttrResponseData, Attr, AttrValue } from '../../../api/product/attr/type';
+import type { Attr } from '../../../api/product/attr/type';
 import { ElMessage } from 'element-plus';
 let categoryStore = useCategoryStore()
 

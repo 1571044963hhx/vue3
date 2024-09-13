@@ -10,6 +10,7 @@ let request = axios.create({
 const cancelSource = axios.CancelToken.source()
 //请求拦截器
 request.interceptors.request.use((config: any) => {
+    console.log(request)
     const usestore =useUserStore();
     if(usestore.token){
         config.headers.token =usestore.token

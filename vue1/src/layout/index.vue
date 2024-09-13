@@ -85,12 +85,6 @@ let LayOutSettingStore=useLayOutSettingStore();
         padding: 20px;
         overflow: auto;
         transition: all 0.3s;
-
-        &.fold {
-            width: calc(100vw - $base-menu-min-width );
-            left: $base-menu-min-width;
-        }
-
     }
 }
 </style>

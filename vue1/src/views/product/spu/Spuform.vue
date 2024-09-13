@@ -119,12 +119,6 @@ const initHasSpuData = async (spu) => {
 
     let result3 = await reqALLSaleAttr()
     allSaleAttr.value = result3.data;
-    console.log(2)
-    console.log(result)
-    console.log(result1)
-    console.log(result2)
-    console.log(result3)
-    console.log(imgList.value)
 }
 //添加
 const initAddSpu = async(c3Id)=>{

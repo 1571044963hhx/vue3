@@ -82,17 +82,6 @@ const $emit = defineEmits(['change0Scene'])
 const cancel = () => {
     $emit('change0Scene', { flag: 0 })
 }
-// const save = () => {
-//     //整理数据
-//     console.log(arrAttr.value)
-//     console.log(saleAttr.value)
-//     skuParams.skuSaleAttrValueList = arrAttr.value.map((item)=>{
-//         if(item.arrIdAndValueId){
-//             return [attrId, valueId] = item.arrIdAndValueId.split(':')                     
-//         }
-//     })
-// }
-//保存按钮的方法
 const save = async () => {
     //整理参数
     //平台属性
@@ -117,14 +106,14 @@ const save = async () => {
         return prev;
     }, []);
     //添加SKU的请求
-    let result= await reqAddSku(skuParams);
+    let result = await reqAddSku(skuParams);
     if (result.code == 200) {
         ElMessage({
             type: 'success',
             message: '添加SKU成功'
         });
         //通知父组件切换场景为零
-        $emit('changeScene',{flag:0,params:''})
+        $emit('changeScene', { flag: 0, params: '' })
     } else {
         ElMessage({
             type: 'error',
@@ -132,10 +121,6 @@ const save = async () => {
         })
     }
 }
-
-
-
-
 
 const initSkuData = async (c1Id, c2Id, spu) => {
     skuParams.category3Id = spu.category3Id
@@ -150,9 +135,6 @@ const initSkuData = async (c1Id, c2Id, spu) => {
     arrAttr.value = result.data
     saleAttr.value = result1.data
     imgAttr.value = result2.data
-    console.log(arrAttr.value)
-    console.log(saleAttr.value)
-    console.log(imgAttr.value)
 }
 //设置默认图片的方法回调
 const handler = (row) => {

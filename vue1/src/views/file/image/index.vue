@@ -34,7 +34,6 @@ const openFileInput = () => {
     // 点击图标时触发文件选择框(获取input元素，并进行点击事件)
     fileInputRef.value.click()
 }
-
 //@change 事件的执行时机是用户通过文件选择对话框选择文件并确认后，即关闭文件选择对话框时。
 const handleFileChange = async (event) => {
     // 处理文件选择事件(加载中，获取上传的文件，如果没有上传则返回)
