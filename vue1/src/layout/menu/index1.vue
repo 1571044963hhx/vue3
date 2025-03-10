@@ -8,9 +8,23 @@
         </template>
         <el-menu-item-group>
             <el-menu-item index="1-1" @click="handler1">图片上传</el-menu-item>
-            <el-menu-item index="1-2" @click="handler2">多文件上传</el-menu-item> 
-            <el-menu-item index="1-2" @click="handler3">拖拽上传</el-menu-item>    
+            <el-menu-item index="1-2" @click="handler2">多文件上传</el-menu-item>
+            <el-menu-item index="1-2" @click="handler3">拖拽上传</el-menu-item>
             <el-menu-item index="1-2" @click="handler4">大文件上传</el-menu-item>
+        </el-menu-item-group>
+    </el-sub-menu>
+    <el-sub-menu index="2">
+        <template #title>
+            <el-icon>
+                <location />
+            </el-icon>
+            <span>ai搜索</span>
+        </template>
+        <el-menu-item-group>
+            <el-menu-item index="2-1" @click="handler5">文字搜索</el-menu-item>
+            <el-menu-item index="2-2" @click="handler6">语音搜索</el-menu-item>
+            <el-menu-item index="2-2" @click="handler7">图片搜索</el-menu-item>
+            <el-menu-item index="2-2" @click="handler8">文档搜索</el-menu-item>
         </el-menu-item-group>
     </el-sub-menu>
 </template>
@@ -18,17 +32,29 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
 let $router = useRouter()
-const handler1 = ()=>{
+const handler1 = () => {
     $router.push('/file/image')
 }
-const handler2 = ()=>{
+const handler2 = () => {
     $router.push('/file/manyfile')
 }
-const handler3 = ()=>{
+const handler3 = () => {
     $router.push('/file/dragup')
 }
-const handler4 = ()=>{
+const handler4 = () => {
     $router.push('/file/bigfileup')
+}
+const handler5 = () => {
+    $router.push('/ai/text')
+}
+const handler6 = () => {
+    $router.push('/ai/voice')
+}
+const handler7 = () => {
+    $router.push('/ai/image')
+}
+const handler8 = () => {
+    $router.push('/ai/document')
 }
 
 

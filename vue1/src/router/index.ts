@@ -1,10 +1,10 @@
 import {createRouter,createWebHashHistory} from 'vue-router'
-import { addrouter } from './routes'
+import { addrouter,airouter } from './routes'
 import {constantRoute} from './routes'
 
 let router = createRouter({
     history:createWebHashHistory(),
-    routes:[...constantRoute,addrouter],
+    routes:[...constantRoute,addrouter,airouter],
     scrollBehavior(){
         return{
             left:0,

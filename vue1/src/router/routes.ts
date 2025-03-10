@@ -205,5 +205,52 @@ export const addrouter = {
         },
     ],
 }
-
+export const airouter = {
+    path: '/ai',
+    component: () => import('../layout/index.vue'),
+    name: 'AiSearch',
+    meta: {
+        title: 'AI搜索',
+        icon: 'Search',
+    },
+    redirect: '/ai/text',
+    children: [
+        {
+            path: '/ai/text',
+            component: () => import('../views/ai/text/index.vue'),
+            name: 'TextSearch',
+            meta: {
+                title: '文字搜索',
+                icon: 'Edit',
+            },
+        },
+        {
+            path: '/ai/image',
+            component: () => import('../views/ai/image/index.vue'),
+            name: 'ImageSearch',
+            meta: {
+                title: '图片搜索',
+                icon: 'Picture',
+            },
+        },
+        {
+            path: '/ai/voice',
+            component: () => import('../views/ai/voice/index.vue'),
+            name: 'VoiceSearch',
+            meta: {
+                title: '语音搜索',
+                icon: 'Microphone',
+            },
+        },
+        {
+            path: '/ai/document',
+            component: () => import('../views/ai/document/index.vue'),
+            name: 'DocumentSearch',
+            meta: {
+                title: '文档搜索',
+                icon: 'Document',
+            },
+        },
+    ],
+}
 
